@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 enum TransactionType {
-    WITHDRAWL,
     DEPOSIT,
     TRANSFER,
+    WITHDRA,
 }
 
 class User {
@@ -46,7 +46,7 @@ class User {
             return balance;
         }
         balance -= amount;
-        addTransaction(amount, TransactionType.WITHDRAWL, userId);
+        addTransaction(amount, TransactionType.WITHDRA, userId);
         return balance;
     }
 
@@ -138,9 +138,9 @@ public class AtmInterface {
             switch (choice) {
                 case 1:
                     System.out.println("Your Transactions: ");
-                    System.out.println("Transaction ID\t\t\t\tTime\t\t\t\tremainig\tamount");
+                    System.out.println("Transaction ID\t\t\t\t\t\t\tTime\t\t\t\tremainig\tamount");
                     for (Transaction transaction : user.getTransactions()) {
-                        System.out.println(transaction.tractionId + "\t\t" + transaction.timeStr + "\t"
+                        System.out.println(transaction.tractionId + ((transaction.type == TransactionType.TRANSFER)?"\t":"\t\t\t\t") + transaction.timeStr + "\t"
                                 + transaction.remainBal + "/-\t" + transaction.amount + "/-");
                     }
                     break;
