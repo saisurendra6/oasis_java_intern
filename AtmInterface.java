@@ -109,10 +109,10 @@ public class AtmInterface {
         float amount;
 
         HashMap<String, User> userMap = new HashMap<String, User>();
-        userMap.put("123", new User("123", 1234));
-        userMap.put("456", new User("456", 4567));
-        userMap.put("789", new User("789", 7890));
-        userMap.put("246", new User("246", 2468));
+        userMap.put("1234123412341234", new User("1234123412341234", 1234));
+        userMap.put("2468024680246802", new User("2468024680246802", 2468));
+        userMap.put("1357913579135791", new User("1357913579135791", 1357));
+        userMap.put("7890789078907890", new User("7890789078907890", 7890));
 
         System.out.println(
                 "\n\t\t\t\t ----------------------- \n\t\t\t\t|\tMANA ATM\t|\t\t\n\t\t\t\t ----------------------- \n");
@@ -138,7 +138,6 @@ public class AtmInterface {
             switch (choice) {
                 case 1:
                     System.out.println("Your Transactions: ");
-                    // System.out.println(user.getTransactions());
                     System.out.println("Transaction ID\t\t\t\tTime\t\t\t\tremainig\tamount");
                     for (Transaction transaction : user.getTransactions()) {
                         System.out.println(transaction.tractionId + "\t\t" + transaction.timeStr + "\t"
@@ -168,7 +167,7 @@ public class AtmInterface {
                     String receiverId = scanner.next();
                     if (!userMap.containsKey(receiverId))
                         System.out.println("canot find user");
-                    else if (receiverId == user.userId)
+                    else if (receiverId.equals(user.userId))
                         System.out.println("You cannot transfer money into same account.");
                     else {
                         System.out.println("Enter the amount to transfer: ");
